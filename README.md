@@ -1,181 +1,245 @@
 <p align="center">
-  <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
-  <a href="https://x.com/roocode"><img src="https://img.shields.io/badge/roocode-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
-  <a href="https://youtube.com/@roocodeyt?feature=shared"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"></a>
-  <a href="https://discord.gg/roocode"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
-  <a href="https://www.reddit.com/r/RooCode/"><img src="https://img.shields.io/badge/Join%20r%2FRooCode-FF4500?style=flat&logo=reddit&logoColor=white" alt="Join r/RooCode"></a>
+  <img src="ForgeFox_Logo.png" width="200" height="200" alt="ForgeFox Logo">
 </p>
+
+<h1 align="center">ForgeFox</h1>
+
 <p align="center">
-  <em>Get help fast → <a href="https://discord.gg/roocode">Join Discord</a> • Prefer async? → <a href="https://www.reddit.com/r/RooCode/">Join r/RooCode</a></em>
+  <strong>An open-source AI coding assistant for VS Code — forged by the community, for the community.</strong>
 </p>
 
-# Roo Code
-
-> Your AI-Powered Dev Team, Right in Your Editor
-
-## What's New in v3.52.0
-
-- Add Poe as an AI provider so you can access Poe models directly in Roo Code.
-- Improve the xAI provider with a Responses API migration, reusable transform utilities, and updated Grok-4.20 defaults.
-- Fix MiniMax model listings and context window handling for more reliable setup.
-
-<details>
-  <summary>🌐 Available languages</summary>
-
-- [English](README.md)
-- [Català](locales/ca/README.md)
-- [Deutsch](locales/de/README.md)
-- [Español](locales/es/README.md)
-- [Français](locales/fr/README.md)
-- [हिंदी](locales/hi/README.md)
-- [Bahasa Indonesia](locales/id/README.md)
-- [Italiano](locales/it/README.md)
-- [日本語](locales/ja/README.md)
-- [한국어](locales/ko/README.md)
-- [Nederlands](locales/nl/README.md)
-- [Polski](locales/pl/README.md)
-- [Português (BR)](locales/pt-BR/README.md)
-- [Русский](locales/ru/README.md)
-- [Türkçe](locales/tr/README.md)
-- [Tiếng Việt](locales/vi/README.md)
-- [简体中文](locales/zh-CN/README.md)
-- [繁體中文](locales/zh-TW/README.md)
-- ...
-  </details>
+<p align="center">
+  <a href="#-quick-start">Quick Start</a> •
+  <a href="#-what-is-forgefox">What Is ForgeFox?</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-supported-providers">Providers</a> •
+  <a href="#-contributing">Contributing</a> •
+  <a href="#-license">License</a>
+</p>
 
 ---
 
-## What Can Roo Code Do For YOU?
+## 🦊 What Is ForgeFox?
 
-- Generate Code from natural language descriptions and specs
-- Adapt with Modes: Code, Architect, Ask, Debug, and Custom Modes
-- Refactor & Debug existing code
-- Write & Update documentation
-- Answer Questions about your codebase
-- Automate repetitive tasks
-- Utilize MCP Servers
+**ForgeFox** is an open-source, community-maintained fork of [Roo Code](https://github.com/RooCodeInc/Roo-Code), the popular AI-powered coding assistant for Visual Studio Code.
 
-## Modes
+When Roo Code shifted toward a cloud-based approach, we forked the project to ensure the community continues to have access to a **powerful, local-first, provider-agnostic AI coding assistant** that puts developers first.
 
-Roo Code adapts to how you work:
+### Our Mission
 
-- Code Mode: everyday coding, edits, and file ops
-- Architect Mode: plan systems, specs, and migrations
-- Ask Mode: fast answers, explanations, and docs
-- Debug Mode: trace issues, add logs, isolate root causes
-- Custom Modes: build specialized modes for your team or workflow
+ForgeFox is committed to:
 
-Learn more: [Using Modes](https://docs.roocode.com/basic-usage/using-modes) • [Custom Modes](https://docs.roocode.com/advanced-usage/custom-modes)
+- 🔓 **Remaining open source** — always Apache 2.0 licensed, always community-driven
+- 🏠 **Local-first development** — your code stays on your machine, your API keys stay yours
+- 🔌 **Provider freedom** — use any LLM provider you want: OpenAI, Anthropic, Google, Ollama, LM Studio, and dozens more
+- 🛠️ **IDE-centric design** — built for the developer workflow, not the cloud
+- 👥 **Community empowerment** — every contributor helps shape the future of AI-assisted coding
 
-## Tutorial & Feature Videos
-
-<div align="center">
-
-|                                                                                                                                                                           |                                                                                                                                                                            |                                                                                                                                                                          |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>Installing Roo Code</b> | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>Configuring Profiles</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>Codebase Indexing</b>  |
-|    <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>Custom Modes</b>     |     <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>Checkpoints</b>      | <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>Context Management</b> |
-
-</div>
-<p align="center">
-<a href="https://docs.roocode.com/tutorial-videos">More quick tutorial and feature videos...</a>
-</p>
-
-## Resources
-
-- **[Documentation](https://docs.roocode.com):** The official guide to installing, configuring, and mastering Roo Code.
-- **[YouTube Channel](https://youtube.com/@roocodeyt?feature=shared):** Watch tutorials and see features in action.
-- **[Discord Server](https://discord.gg/roocode):** Join the community for real-time help and discussion.
-- **[Reddit Community](https://www.reddit.com/r/RooCode):** Share your experiences and see what others are building.
-- **[GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues):** Report bugs and track development.
-- **[Feature Requests](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Have an idea? Share it with the developers.
+While Roo Code moved toward cloud services, **ForgeFox refines the experience with the developer and IDE in mind**. We believe the best AI coding tools should be open, flexible, and under your control.
 
 ---
 
-## Local Setup & Development
+## ⚡ Quick Start
 
-1. **Clone** the repo:
+1. **Install the extension** (see [Installation](#-installation) below)
+2. **Configure an API key** for your preferred AI provider (OpenAI, Anthropic, Google, etc.)
+3. **Start coding with AI** — open the ForgeFox sidebar and describe what you want to build
 
-```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+That's it. No cloud account needed. No sign-ups. Just you, your IDE, and your AI.
+
+---
+
+## ✨ Features
+
+- **Autonomous Coding Agent** — ForgeFox can create files, edit code, execute terminal commands, and manage your project structure
+- **Multi-Provider Support** — Connect to 20+ AI providers including OpenAI, Anthropic Claude, Google Gemini, AWS Bedrock, Azure OpenAI, Ollama, LM Studio, and more
+- **Local Model Support** — Run completely offline with Ollama, LM Studio, or any OpenAI-compatible local server
+- **Custom Modes** — Create specialized AI personas for different tasks (debugging, architecture, documentation, etc.)
+- **MCP Tool Support** — Extend ForgeFox's capabilities with Model Context Protocol servers
+- **Context Management** — Mention files, folders, URLs, or terminal output to give the AI precise context
+- **Checkpoints** — Automatically save snapshots of your work so you can revert AI changes
+- **Multi-Language** — Interface available in 18 languages
+- **Git Worktree Support** — Work on multiple branches simultaneously
+- **Custom Instructions** — Set global and per-project rules for how the AI should behave
+
+---
+
+## 📦 Installation
+
+### Option 1: Install from VSIX (Recommended)
+
+1. **Download** the latest `.vsix` file from the [Releases](https://github.com/seek4coherence/ForgeFox/releases) page
+2. Open VS Code
+3. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
+4. Type **"Extensions: Install from VSIX..."**
+5. Select the downloaded `.vsix` file
+6. Reload VS Code
+
+### Option 2: Build from Source
+
+#### Prerequisites
+- [Node.js](https://nodejs.org/) v22+ (check `.nvmrc` for exact version)
+- [pnpm](https://pnpm.io/) v9+
+- [Git](https://git-scm.com/)
+
+#### Steps
+
+```bash
+# Clone the repository
+git clone https://github.com/seek4coherence/ForgeFox.git
+cd ForgeFox
+
+# Install dependencies
+pnpm install
+
+# Build the extension
+cd src
+node esbuild.mjs
+
+# Package as VSIX
+npx @vscode/vsce package --no-dependencies
 ```
 
-2. **Install dependencies**:
+This produces a `forgefox-X.Y.Z.vsix` file you can install:
 
-```sh
+```bash
+code --install-extension forgefox-*.vsix
+```
+
+#### Development Mode
+
+To run the extension in development mode:
+
+1. Open the project in VS Code
+2. Press `F5` to launch the Extension Development Host
+3. The extension will be available in the new VS Code window
+
+---
+
+## 🔌 Supported Providers
+
+ForgeFox works with any LLM provider you choose. No cloud lock-in.
+
+| Provider | Type | Setup |
+|----------|------|-------|
+| **OpenAI** | Cloud API | Paste your API key |
+| **Anthropic (Claude)** | Cloud API | Paste your API key |
+| **Google Gemini** | Cloud API | Paste your API key |
+| **AWS Bedrock** | Cloud API | Configure AWS credentials |
+| **Azure OpenAI** | Cloud API | Configure Azure endpoint |
+| **OpenRouter** | Cloud API | Paste your API key |
+| **DeepSeek** | Cloud API | Paste your API key |
+| **Mistral** | Cloud API | Paste your API key |
+| **Groq** | Cloud API | Paste your API key |
+| **Together** | Cloud API | Paste your API key |
+| **Fireworks** | Cloud API | Paste your API key |
+| **xAI (Grok)** | Cloud API | Paste your API key |
+| **SambaNova** | Cloud API | Paste your API key |
+| **Ollama** | Local | Install Ollama and pull a model |
+| **LM Studio** | Local | Install LM Studio and load a model |
+| **VS Code Language Models** | Built-in | Use GitHub Copilot models through VS Code |
+| **Any OpenAI-compatible** | Custom | Point to any compatible API endpoint |
+
+---
+
+## 🤝 Contributing
+
+**We welcome and encourage contributions from everyone!** ForgeFox is a community project and we need your help to make it the best AI coding assistant possible.
+
+### How to Contribute
+
+1. **Fork** this repository
+2. **Create a branch** for your feature or fix: `git checkout -b feature/my-awesome-feature`
+3. **Make your changes** and commit them with clear messages
+4. **Test your changes** — run `cd src && npx vitest run` and `cd webview-ui && npx vitest run`
+5. **Submit a Pull Request** with a clear description of what you've done
+
+### Ways to Contribute
+
+- 🐛 **Bug Reports** — Found a bug? [Open an issue](https://github.com/seek4coherence/ForgeFox/issues/new)
+- 💡 **Feature Requests** — Have an idea? Let us know!
+- 🔧 **Code Contributions** — Fix bugs, add features, improve performance
+- 📝 **Documentation** — Help improve guides, add examples, fix typos
+- 🌐 **Translations** — Help translate ForgeFox into more languages
+- 🧪 **Testing** — Try new features and report your experience
+
+### Development Setup
+
+```bash
+git clone https://github.com/seek4coherence/ForgeFox.git
+cd ForgeFox
 pnpm install
 ```
 
-3. **Run the extension**:
+Then open in VS Code and press `F5` to launch the development host.
 
-There are several ways to run the Roo Code extension:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed development guidelines.
 
-### Development Mode (F5)
+---
 
-For active development, use VSCode's built-in debugging:
+## 📋 Project Structure
 
-Press `F5` (or go to **Run** → **Start Debugging**) in VSCode. This will open a new VSCode window with the Roo Code extension running.
-
-- Changes to the webview will appear immediately.
-- Changes to the core extension will also hot reload automatically.
-
-### Automated VSIX Installation
-
-To build and install the extension as a VSIX package directly into VSCode:
-
-```sh
-pnpm install:vsix [-y] [--editor=<command>]
+```
+ForgeFox/
+├── src/                    # Main VS Code extension source
+│   ├── api/                # LLM provider integrations
+│   ├── core/               # Core agent logic
+│   ├── activate/           # Extension activation & commands
+│   ├── services/           # MCP, checkpoints, etc.
+│   ├── i18n/               # Backend internationalization
+│   └── package.json        # Extension manifest
+├── webview-ui/             # React-based UI (sidebar, panels)
+│   ├── src/components/     # UI components
+│   ├── src/i18n/           # Frontend internationalization
+│   └── src/utils/          # Utilities
+├── packages/               # Shared workspace packages
+│   ├── types/              # Shared TypeScript types
+│   ├── core/               # Core utilities
+│   ├── cloud/              # Cloud services (disabled)
+│   └── telemetry/          # Telemetry (disabled)
+└── apps/                   # Additional apps (CLI, nightly, etc.)
 ```
 
-This command will:
+---
 
-- Ask which editor command to use (code/cursor/code-insiders) - defaults to 'code'
-- Uninstall any existing version of the extension.
-- Build the latest VSIX package.
-- Install the newly built VSIX.
-- Prompt you to restart VS Code for changes to take effect.
+## 🗺️ Roadmap
 
-Options:
+ForgeFox will continue to evolve with periodic updates focused on:
 
-- `-y`: Skip all confirmation prompts and use defaults
-- `--editor=<command>`: Specify the editor command (e.g., `--editor=cursor` or `--editor=code-insiders`)
+- 🔧 Stability improvements and bug fixes
+- 🚀 Better local model support and performance
+- 🧩 Enhanced MCP tool ecosystem
+- 📱 Improved UI/UX for the sidebar experience
+- 🔒 Privacy-first features
+- 🌐 Community-requested features and integrations
 
-### Manual VSIX Installation
-
-If you prefer to install the VSIX package manually:
-
-1.  First, build the VSIX package:
-    ```sh
-    pnpm vsix
-    ```
-2.  A `.vsix` file will be generated in the `bin/` directory (e.g., `bin/roo-cline-<version>.vsix`).
-3.  Install it manually using the VSCode CLI:
-    ```sh
-    code --install-extension bin/roo-cline-<version>.vsix
-    ```
+We're building this together. [Join the conversation](https://github.com/seek4coherence/ForgeFox/discussions) and help shape the roadmap.
 
 ---
 
-We use [changesets](https://github.com/changesets/changesets) for versioning and publishing. Check our `CHANGELOG.md` for release notes.
+## 📜 License
+
+ForgeFox is licensed under the [Apache License 2.0](LICENSE).
+
+### Attribution
+
+ForgeFox is a fork of [Roo Code](https://github.com/RooCodeInc/Roo-Code), which was originally developed by Roo Code, Inc. under the Apache 2.0 license. Roo Code was itself derived from [Cline](https://github.com/cline/cline) by Saoud Rizwan.
+
+We gratefully acknowledge the work of the original Roo Code team and the Cline project. See the [NOTICE](NOTICE) file for full attribution details.
+
+**ForgeFox is an independent project** and is not affiliated with, endorsed by, or sponsored by Roo Code, Inc. or any of its affiliates.
 
 ---
 
-## Disclaimer
+## 💬 Contact
 
-**Please note** that Roo Code, Inc does **not** make any representations or warranties regarding any code, models, or other tools provided or made available in connection with Roo Code, any associated third-party tools, or any resulting outputs. You assume **all risks** associated with the use of any such tools or outputs; such tools are provided on an **"AS IS"** and **"AS AVAILABLE"** basis. Such risks may include, without limitation, intellectual property infringement, cyber vulnerabilities or attacks, bias, inaccuracies, errors, defects, viruses, downtime, property loss or damage, and/or personal injury. You are solely responsible for your use of any such tools or outputs (including, without limitation, the legality, appropriateness, and results thereof).
-
----
-
-## Contributing
-
-We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).
+- **GitHub Issues**: [github.com/seek4coherence/ForgeFox/issues](https://github.com/seek4coherence/ForgeFox/issues)
+- **Email**: support@BusinessEdgeAnalytics.com
+- **Website**: [www.BusinessEdgeAnalytics.com](https://www.BusinessEdgeAnalytics.com)
 
 ---
 
-## License
-
-[Apache 2.0 © 2025 Roo Code, Inc.](./LICENSE)
-
----
-
-**Enjoy Roo Code!** Whether you keep it on a short leash or let it roam autonomously, we can’t wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!
+<p align="center">
+  <em>Forged by the community. Powered by your choice of AI.</em>
+</p>

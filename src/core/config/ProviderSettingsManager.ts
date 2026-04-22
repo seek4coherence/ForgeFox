@@ -13,8 +13,8 @@ import {
 	type ProviderName,
 	isProviderName,
 	isRetiredProvider,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@forgefox/types"
+import { TelemetryService } from "@forgefox/telemetry"
 
 import { Mode, modes } from "../../shared/modes"
 import { buildApiHandler } from "../../api"

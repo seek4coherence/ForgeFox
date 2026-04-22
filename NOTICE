@@ -1,0 +1,48 @@
+ForgeFox
+Copyright 2025-2026 Business Edge Analytics LLC
+
+This product is a fork of Roo Code (formerly Roo-Cline),
+originally developed by Roo Code, Inc. (formerly Roo Veterinary, Inc.).
+
+Original Project: Roo Code
+Original Repository: https://github.com/RooCodeInc/Roo-Code
+Original License: Apache License, Version 2.0
+Original Copyright: Copyright 2024-2025 Roo Code, Inc.
+
+Roo Code was itself derived from Cline (formerly Claude Dev),
+originally created by Saoud Rizwan.
+Original Cline Repository: https://github.com/cline/cline
+Original Cline License: Apache License, Version 2.0
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+---
+
+MODIFICATIONS NOTICE:
+
+ForgeFox has made the following substantial modifications to the original
+Roo Code codebase:
+
+1. Complete rebranding from "Roo Code" to "ForgeFox"
+2. Removal of dependencies on Roo Code cloud services (authentication,
+   telemetry, cloud API proxy)
+3. Replacement of all logo and icon assets
+4. Renaming of VS Code extension identifiers, command IDs, configuration
+   keys, and package namespaces
+5. Disabling of proprietary cloud features (Roo Code Cloud, Roo Code
+   Router) that depended on roocode.com infrastructure
+6. Ongoing development focused on local-first, provider-agnostic AI
+   coding assistance
+
+ForgeFox is an independent project and is not affiliated with, endorsed
+by, or sponsored by Roo Code, Inc. or any of its affiliates.

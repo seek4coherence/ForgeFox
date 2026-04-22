@@ -1,7 +1,7 @@
 // npx vitest run __tests__/nested-delegation-resume.spec.ts
 
 import { describe, it, expect, vi, beforeEach } from "vitest"
-import { RooCodeEventName } from "@roo-code/types"
+import { ForgeFoxEventName } from "@forgefox/types"
 
 // Mock safe-stable-stringify to avoid runtime error
 vi.mock("safe-stable-stringify", () => ({
@@ -9,7 +9,7 @@ vi.mock("safe-stable-stringify", () => ({
 }))
 
 // Mock TelemetryService
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@forgefox/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureTaskCompleted: vi.fn(),
@@ -210,8 +210,8 @@ describe("Nested delegation resume (A → B → C)", () => {
 
 		// Events emitted: C -> B hop
 		const eventNamesAfterC = emitSpy.mock.calls.map((c: any[]) => c[0])
-		expect(eventNamesAfterC).toContain(RooCodeEventName.TaskDelegationCompleted)
-		expect(eventNamesAfterC).toContain(RooCodeEventName.TaskDelegationResumed)
+		expect(eventNamesAfterC).toContain(ForgeFoxEventName.TaskDelegationCompleted)
+		expect(eventNamesAfterC).toContain(ForgeFoxEventName.TaskDelegationResumed)
 
 		// Step 2: B completes -> should reopen A automatically (parent reference missing, must use parentTaskId path)
 		const clineB = {
@@ -256,9 +256,9 @@ describe("Nested delegation resume (A → B → C)", () => {
 
 		// Provider emitted TaskDelegationCompleted/Resumed twice across both hops
 		const completedEvents = emitSpy.mock.calls.filter(
-			(c: any[]) => c[0] === RooCodeEventName.TaskDelegationCompleted,
+			(c: any[]) => c[0] === ForgeFoxEventName.TaskDelegationCompleted,
 		)
-		const resumedEvents = emitSpy.mock.calls.filter((c: any[]) => c[0] === RooCodeEventName.TaskDelegationResumed)
+		const resumedEvents = emitSpy.mock.calls.filter((c: any[]) => c[0] === ForgeFoxEventName.TaskDelegationResumed)
 		expect(completedEvents.length).toBeGreaterThanOrEqual(2)
 		expect(resumedEvents.length).toBeGreaterThanOrEqual(2)
 

@@ -120,7 +120,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 				avatarClassName: "bg-[#2B2D31] text-[#F8F8F9] ring-1 ring-white/10",
 				kind: "human",
 				body: (
-					<span>We need to add a page to our Marketing site that highlights using Roo Code from Slack.</span>
+					<span>We need to add a page to our Marketing site that highlights using ForgeFox from Slack.</span>
 				),
 			},
 			{
@@ -133,21 +133,21 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 				body: (
 					<div className="space-y-2">
 						<div>
-							The documentation for using Roo Code from Slack is here:{" "}
+							The documentation for using ForgeFox from Slack is here:{" "}
 							<FakeLink className="hover:text-violet-200">
-								https://docs.roocode.com/roo-code-cloud/slack-integration
+								https://docs.forgefox.com/forgefox-cloud/slack-integration
 							</FakeLink>
 						</div>
 						<div className="text-[#B8BBC0]">Here are some pages from our site we can use for guidance:</div>
 						<ol className="list-decimal pl-5 text-[#D1D2D3]">
 							<li>
-								<FakeLink className="hover:text-violet-200">https://roocode.com</FakeLink>
+								<FakeLink className="hover:text-violet-200">https://forgefox.com</FakeLink>
 							</li>
 							<li>
-								<FakeLink className="hover:text-violet-200">https://roocode.com/extension</FakeLink>
+								<FakeLink className="hover:text-violet-200">https://forgefox.com/extension</FakeLink>
 							</li>
 							<li>
-								<FakeLink className="hover:text-violet-200">https://roocode.com/cloud</FakeLink>
+								<FakeLink className="hover:text-violet-200">https://forgefox.com/cloud</FakeLink>
 							</li>
 						</ol>
 					</div>
@@ -200,7 +200,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 							Calling <span className="font-semibold text-[#F8F8F9]">Planneroo</span> to get started on
 							your task on{" "}
 							<code className="rounded bg-white/10 px-1.5 py-0.5 text-[12px] text-[#F8F8F9]">
-								RooCodeInc/Roo-Code
+								ForgeFoxInc/ForgeFox
 							</code>
 						</div>
 						<div>
@@ -268,7 +268,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 				body: (
 					<div className="space-y-3">
 						<p>
-							I&apos;ve created a comprehensive implementation plan for the Roo Code Slack integration
+							I&apos;ve created a comprehensive implementation plan for the ForgeFox Slack integration
 							marketing page at{" "}
 							<code className="rounded bg-white/10 px-1.5 py-0.5 text-[12px] text-[#F8F8F9]">
 								plans/slack-marketing-page-plan.md
@@ -326,7 +326,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 				body: (
 					<div className="space-y-3">
 						<p>
-							I&apos;ve built the Roo Code Slack integration marketing page. Here&apos;s what was
+							I&apos;ve built the ForgeFox Slack integration marketing page. Here&apos;s what was
 							implemented:
 						</p>
 
@@ -336,14 +336,14 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 								<li>
 									<span className="mr-2">•</span>
 									<code className="rounded bg-white/10 px-1.5 py-0.5 text-[12px] text-[#F8F8F9]">
-										apps/web-roo-code/src/app/slack/page.tsx
+										apps/web-forgefox/src/app/slack/page.tsx
 									</code>{" "}
 									— Slack marketing page
 								</li>
 								<li>
 									<span className="mr-2">•</span>
 									<code className="rounded bg-white/10 px-1.5 py-0.5 text-[12px] text-[#F8F8F9]">
-										apps/web-roo-code/src/lib/constants.ts
+										apps/web-forgefox/src/lib/constants.ts
 									</code>{" "}
 									— added{" "}
 									<code className="rounded bg-white/10 px-1.5 py-0.5 text-[12px] text-[#F8F8F9]">
@@ -353,7 +353,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 								<li>
 									<span className="mr-2">•</span>
 									<code className="rounded bg-white/10 px-1.5 py-0.5 text-[12px] text-[#F8F8F9]">
-										apps/web-roo-code/src/components/chromes/nav-bar.tsx
+										apps/web-forgefox/src/components/chromes/nav-bar.tsx
 									</code>{" "}
 									— added Slack to Product dropdown
 								</li>
@@ -365,7 +365,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 							<div className="mt-2">
 								<span className="font-semibold text-[#F8F8F9]">PR #10853</span>:{" "}
 								<FakeLink className="hover:text-violet-200">
-									https://github.com/RooCodeInc/Roo-Code/pull/10853
+									https://github.com/ForgeFoxInc/ForgeFox/pull/10853
 								</FakeLink>
 							</div>
 						</div>
@@ -462,7 +462,7 @@ export function SlackThreadDemo({ className }: SlackThreadDemoProps): JSX.Elemen
 		<div
 			className={cn("w-full max-w-[620px] h-[520px] sm:h-[560px]", className)}
 			role="img"
-			aria-label="Animated Slack thread showing Roo Code responding as @Roomote">
+			aria-label="Animated Slack thread showing ForgeFox responding as @Roomote">
 			<div
 				aria-hidden="true"
 				className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1A1D21] shadow-2xl shadow-black/30">

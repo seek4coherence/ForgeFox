@@ -1,4 +1,4 @@
-import type { ClineMessage } from "@roo-code/types"
+import type { ClineMessage } from "@forgefox/types"
 
 import { safeJsonParse } from "./safeJsonParse.js"
 

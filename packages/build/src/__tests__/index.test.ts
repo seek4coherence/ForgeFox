@@ -6,39 +6,39 @@ describe("generatePackageJson", () => {
 	it("should be a test", () => {
 		const generatedPackageJson = generatePackageJson({
 			packageJson: {
-				name: "roo-cline",
+				name: "forgefox",
 				displayName: "%extension.displayName%",
 				description: "%extension.description%",
-				publisher: "RooVeterinaryInc",
+				publisher: "ForgeFox",
 				version: "3.17.2",
 				icon: "assets/icons/icon.png",
 				contributes: {
 					viewsContainers: {
 						activitybar: [
 							{
-								id: "roo-cline-ActivityBar",
+								id: "forgefox-ActivityBar",
 								title: "%views.activitybar.title%",
 								icon: "assets/icons/icon.svg",
 							},
 						],
 					},
 					views: {
-						"roo-cline-ActivityBar": [
+						"forgefox-ActivityBar": [
 							{
 								type: "webview",
-								id: "roo-cline.SidebarProvider",
+								id: "forgefox.SidebarProvider",
 								name: "",
 							},
 						],
 					},
 					commands: [
 						{
-							command: "roo-cline.plusButtonClicked",
+							command: "forgefox.plusButtonClicked",
 							title: "%command.newTask.title%",
 							icon: "$(edit)",
 						},
 						{
-							command: "roo-cline.openInNewTab",
+							command: "forgefox.openInNewTab",
 							title: "%command.openInNewTab.title%",
 							category: "%configuration.title%",
 						},
@@ -46,48 +46,48 @@ describe("generatePackageJson", () => {
 					menus: {
 						"editor/context": [
 							{
-								submenu: "roo-cline.contextMenu",
+								submenu: "forgefox.contextMenu",
 								group: "navigation",
 							},
 						],
-						"roo-cline.contextMenu": [
+						"forgefox.contextMenu": [
 							{
-								command: "roo-cline.addToContext",
+								command: "forgefox.addToContext",
 								group: "1_actions@1",
 							},
 						],
 						"editor/title": [
 							{
-								command: "roo-cline.plusButtonClicked",
+								command: "forgefox.plusButtonClicked",
 								group: "navigation@1",
-								when: "activeWebviewPanelId == roo-cline.TabPanelProvider",
+								when: "activeWebviewPanelId == forgefox.TabPanelProvider",
 							},
 							{
-								command: "roo-cline.settingsButtonClicked",
+								command: "forgefox.settingsButtonClicked",
 								group: "navigation@6",
-								when: "activeWebviewPanelId == roo-cline.TabPanelProvider",
+								when: "activeWebviewPanelId == forgefox.TabPanelProvider",
 							},
 							{
-								command: "roo-cline.accountButtonClicked",
+								command: "forgefox.accountButtonClicked",
 								group: "navigation@6",
-								when: "activeWebviewPanelId == roo-cline.TabPanelProvider",
+								when: "activeWebviewPanelId == forgefox.TabPanelProvider",
 							},
 						],
 					},
 					submenus: [
 						{
-							id: "roo-cline.contextMenu",
+							id: "forgefox.contextMenu",
 							label: "%views.contextMenu.label%",
 						},
 						{
-							id: "roo-cline.terminalMenu",
+							id: "forgefox.terminalMenu",
 							label: "%views.terminalMenu.label%",
 						},
 					],
 					configuration: {
 						title: "%configuration.title%",
 						properties: {
-							"roo-cline.allowedCommands": {
+							"forgefox.allowedCommands": {
 								type: "array",
 								items: {
 									type: "string",
@@ -95,7 +95,7 @@ describe("generatePackageJson", () => {
 								default: ["npm test", "npm install", "tsc", "git log", "git diff", "git show"],
 								description: "%commands.allowedCommands.description%",
 							},
-							"roo-cline.customStoragePath": {
+							"forgefox.customStoragePath": {
 								type: "string",
 								default: "",
 								description: "%settings.customStoragePath.description%",
@@ -108,50 +108,50 @@ describe("generatePackageJson", () => {
 				},
 			},
 			overrideJson: {
-				name: "roo-code-nightly",
-				displayName: "Roo Code Nightly",
-				publisher: "RooVeterinaryInc",
+				name: "forgefox-nightly",
+				displayName: "ForgeFox Nightly",
+				publisher: "ForgeFox",
 				version: "0.0.1",
 				icon: "assets/icons/icon-nightly.png",
 				scripts: {},
 			},
-			substitution: ["roo-cline", "roo-code-nightly"],
+			substitution: ["forgefox", "forgefox-nightly"],
 		})
 
 		expect(generatedPackageJson).toStrictEqual({
-			name: "roo-code-nightly",
-			displayName: "Roo Code Nightly",
+			name: "forgefox-nightly",
+			displayName: "ForgeFox Nightly",
 			description: "%extension.description%",
-			publisher: "RooVeterinaryInc",
+			publisher: "ForgeFox",
 			version: "0.0.1",
 			icon: "assets/icons/icon-nightly.png",
 			contributes: {
 				viewsContainers: {
 					activitybar: [
 						{
-							id: "roo-code-nightly-ActivityBar",
+							id: "forgefox-nightly-ActivityBar",
 							title: "%views.activitybar.title%",
 							icon: "assets/icons/icon.svg",
 						},
 					],
 				},
 				views: {
-					"roo-code-nightly-ActivityBar": [
+					"forgefox-nightly-ActivityBar": [
 						{
 							type: "webview",
-							id: "roo-code-nightly.SidebarProvider",
+							id: "forgefox-nightly.SidebarProvider",
 							name: "",
 						},
 					],
 				},
 				commands: [
 					{
-						command: "roo-code-nightly.plusButtonClicked",
+						command: "forgefox-nightly.plusButtonClicked",
 						title: "%command.newTask.title%",
 						icon: "$(edit)",
 					},
 					{
-						command: "roo-code-nightly.openInNewTab",
+						command: "forgefox-nightly.openInNewTab",
 						title: "%command.openInNewTab.title%",
 						category: "%configuration.title%",
 					},
@@ -159,48 +159,48 @@ describe("generatePackageJson", () => {
 				menus: {
 					"editor/context": [
 						{
-							submenu: "roo-code-nightly.contextMenu",
+							submenu: "forgefox-nightly.contextMenu",
 							group: "navigation",
 						},
 					],
-					"roo-code-nightly.contextMenu": [
+					"forgefox-nightly.contextMenu": [
 						{
-							command: "roo-code-nightly.addToContext",
+							command: "forgefox-nightly.addToContext",
 							group: "1_actions@1",
 						},
 					],
 					"editor/title": [
 						{
-							command: "roo-code-nightly.plusButtonClicked",
+							command: "forgefox-nightly.plusButtonClicked",
 							group: "navigation@1",
-							when: "activeWebviewPanelId == roo-code-nightly.TabPanelProvider",
+							when: "activeWebviewPanelId == forgefox-nightly.TabPanelProvider",
 						},
 						{
-							command: "roo-code-nightly.settingsButtonClicked",
+							command: "forgefox-nightly.settingsButtonClicked",
 							group: "navigation@6",
-							when: "activeWebviewPanelId == roo-code-nightly.TabPanelProvider",
+							when: "activeWebviewPanelId == forgefox-nightly.TabPanelProvider",
 						},
 						{
-							command: "roo-code-nightly.accountButtonClicked",
+							command: "forgefox-nightly.accountButtonClicked",
 							group: "navigation@6",
-							when: "activeWebviewPanelId == roo-code-nightly.TabPanelProvider",
+							when: "activeWebviewPanelId == forgefox-nightly.TabPanelProvider",
 						},
 					],
 				},
 				submenus: [
 					{
-						id: "roo-code-nightly.contextMenu",
+						id: "forgefox-nightly.contextMenu",
 						label: "%views.contextMenu.label%",
 					},
 					{
-						id: "roo-code-nightly.terminalMenu",
+						id: "forgefox-nightly.terminalMenu",
 						label: "%views.terminalMenu.label%",
 					},
 				],
 				configuration: {
 					title: "%configuration.title%",
 					properties: {
-						"roo-code-nightly.allowedCommands": {
+						"forgefox-nightly.allowedCommands": {
 							type: "array",
 							items: {
 								type: "string",
@@ -208,7 +208,7 @@ describe("generatePackageJson", () => {
 							default: ["npm test", "npm install", "tsc", "git log", "git diff", "git show"],
 							description: "%commands.allowedCommands.description%",
 						},
-						"roo-code-nightly.customStoragePath": {
+						"forgefox-nightly.customStoragePath": {
 							type: "string",
 							default: "",
 							description: "%settings.customStoragePath.description%",

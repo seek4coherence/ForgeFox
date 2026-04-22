@@ -15,7 +15,7 @@ import {
 	type GlobalState,
 	type ProviderName,
 	type ProviderSettings,
-	type RooCodeSettings,
+	type ForgeFoxSettings,
 	type ProviderSettingsEntry,
 	type StaticAppProperties,
 	type DynamicAppProperties,
@@ -37,7 +37,7 @@ import {
 	type ExtensionMessage,
 	type ExtensionState,
 	type MarketplaceInstalledMetadata,
-	RooCodeEventName,
+	ForgeFoxEventName,
 	requestyDefaultModelId,
 	openRouterDefaultModelId,
 	DEFAULT_WRITE_DELAY_MS,
@@ -46,10 +46,10 @@ import {
 	DEFAULT_CHECKPOINT_TIMEOUT_SECONDS,
 	getModelId,
 	isRetiredProvider,
-} from "@roo-code/types"
+} from "@forgefox/types"
 import { aggregateTaskCostsRecursive, type AggregatedCosts } from "./aggregateTaskCosts"
-import { TelemetryService } from "@roo-code/telemetry"
-import { CloudService, getRooCodeApiUrl } from "@roo-code/cloud"
+import { TelemetryService } from "@forgefox/telemetry"
+import { CloudService, getForgeFoxApiUrl } from "@forgefox/cloud"
 
 import { Package } from "../../shared/package"
 import { findLast } from "../../shared/array"
@@ -96,7 +96,7 @@ import { CustomModesManager } from "../config/CustomModesManager"
 import { Task } from "../task/Task"
 
 import { webviewMessageHandler } from "./webviewMessageHandler"
-import type { ClineMessage, TodoItem } from "@roo-code/types"
+import type { ClineMessage, TodoItem } from "@forgefox/types"
 import { readApiMessages, saveApiMessages, saveTaskMessages, TaskHistoryStore } from "../task-persistence"
 import { readTaskMessages } from "../task-persistence/taskMessages"
 import { getNonce } from "./getNonce"
@@ -236,14 +236,14 @@ export class ClineProvider
 		// Forward <most> task events to the provider.
 		// We do something fairly similar for the IPC-based API.
 		this.taskCreationCallback = (instance: Task) => {
-			this.emit(RooCodeEventName.TaskCreated, instance)
+			this.emit(ForgeFoxEventName.TaskCreated, instance)
 
 			// Create named listener functions so we can remove them later.
-			const onTaskStarted = () => this.emit(RooCodeEventName.TaskStarted, instance.taskId)
+			const onTaskStarted = () => this.emit(ForgeFoxEventName.TaskStarted, instance.taskId)
 			const onTaskCompleted = (taskId: string, tokenUsage: TokenUsage, toolUsage: ToolUsage) =>
-				this.emit(RooCodeEventName.TaskCompleted, taskId, tokenUsage, toolUsage)
+				this.emit(ForgeFoxEventName.TaskCompleted, taskId, tokenUsage, toolUsage)
 			const onTaskAborted = async () => {
-				this.emit(RooCodeEventName.TaskAborted, instance.taskId)
+				this.emit(ForgeFoxEventName.TaskAborted, instance.taskId)
 
 				try {
 					// Only rehydrate on genuine streaming failures.
@@ -271,55 +271,55 @@ export class ClineProvider
 					)
 				}
 			}
-			const onTaskFocused = () => this.emit(RooCodeEventName.TaskFocused, instance.taskId)
-			const onTaskUnfocused = () => this.emit(RooCodeEventName.TaskUnfocused, instance.taskId)
-			const onTaskActive = (taskId: string) => this.emit(RooCodeEventName.TaskActive, taskId)
-			const onTaskInteractive = (taskId: string) => this.emit(RooCodeEventName.TaskInteractive, taskId)
-			const onTaskResumable = (taskId: string) => this.emit(RooCodeEventName.TaskResumable, taskId)
-			const onTaskIdle = (taskId: string) => this.emit(RooCodeEventName.TaskIdle, taskId)
-			const onTaskPaused = (taskId: string) => this.emit(RooCodeEventName.TaskPaused, taskId)
-			const onTaskUnpaused = (taskId: string) => this.emit(RooCodeEventName.TaskUnpaused, taskId)
-			const onTaskSpawned = (taskId: string) => this.emit(RooCodeEventName.TaskSpawned, taskId)
-			const onTaskUserMessage = (taskId: string) => this.emit(RooCodeEventName.TaskUserMessage, taskId)
+			const onTaskFocused = () => this.emit(ForgeFoxEventName.TaskFocused, instance.taskId)
+			const onTaskUnfocused = () => this.emit(ForgeFoxEventName.TaskUnfocused, instance.taskId)
+			const onTaskActive = (taskId: string) => this.emit(ForgeFoxEventName.TaskActive, taskId)
+			const onTaskInteractive = (taskId: string) => this.emit(ForgeFoxEventName.TaskInteractive, taskId)
+			const onTaskResumable = (taskId: string) => this.emit(ForgeFoxEventName.TaskResumable, taskId)
+			const onTaskIdle = (taskId: string) => this.emit(ForgeFoxEventName.TaskIdle, taskId)
+			const onTaskPaused = (taskId: string) => this.emit(ForgeFoxEventName.TaskPaused, taskId)
+			const onTaskUnpaused = (taskId: string) => this.emit(ForgeFoxEventName.TaskUnpaused, taskId)
+			const onTaskSpawned = (taskId: string) => this.emit(ForgeFoxEventName.TaskSpawned, taskId)
+			const onTaskUserMessage = (taskId: string) => this.emit(ForgeFoxEventName.TaskUserMessage, taskId)
 			const onTaskTokenUsageUpdated = (taskId: string, tokenUsage: TokenUsage, toolUsage: ToolUsage) =>
-				this.emit(RooCodeEventName.TaskTokenUsageUpdated, taskId, tokenUsage, toolUsage)
+				this.emit(ForgeFoxEventName.TaskTokenUsageUpdated, taskId, tokenUsage, toolUsage)
 
 			// Attach the listeners.
-			instance.on(RooCodeEventName.TaskStarted, onTaskStarted)
-			instance.on(RooCodeEventName.TaskCompleted, onTaskCompleted)
-			instance.on(RooCodeEventName.TaskAborted, onTaskAborted)
-			instance.on(RooCodeEventName.TaskFocused, onTaskFocused)
-			instance.on(RooCodeEventName.TaskUnfocused, onTaskUnfocused)
-			instance.on(RooCodeEventName.TaskActive, onTaskActive)
-			instance.on(RooCodeEventName.TaskInteractive, onTaskInteractive)
-			instance.on(RooCodeEventName.TaskResumable, onTaskResumable)
-			instance.on(RooCodeEventName.TaskIdle, onTaskIdle)
-			instance.on(RooCodeEventName.TaskPaused, onTaskPaused)
-			instance.on(RooCodeEventName.TaskUnpaused, onTaskUnpaused)
-			instance.on(RooCodeEventName.TaskSpawned, onTaskSpawned)
-			instance.on(RooCodeEventName.TaskUserMessage, onTaskUserMessage)
-			instance.on(RooCodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated)
+			instance.on(ForgeFoxEventName.TaskStarted, onTaskStarted)
+			instance.on(ForgeFoxEventName.TaskCompleted, onTaskCompleted)
+			instance.on(ForgeFoxEventName.TaskAborted, onTaskAborted)
+			instance.on(ForgeFoxEventName.TaskFocused, onTaskFocused)
+			instance.on(ForgeFoxEventName.TaskUnfocused, onTaskUnfocused)
+			instance.on(ForgeFoxEventName.TaskActive, onTaskActive)
+			instance.on(ForgeFoxEventName.TaskInteractive, onTaskInteractive)
+			instance.on(ForgeFoxEventName.TaskResumable, onTaskResumable)
+			instance.on(ForgeFoxEventName.TaskIdle, onTaskIdle)
+			instance.on(ForgeFoxEventName.TaskPaused, onTaskPaused)
+			instance.on(ForgeFoxEventName.TaskUnpaused, onTaskUnpaused)
+			instance.on(ForgeFoxEventName.TaskSpawned, onTaskSpawned)
+			instance.on(ForgeFoxEventName.TaskUserMessage, onTaskUserMessage)
+			instance.on(ForgeFoxEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated)
 
 			// Store the cleanup functions for later removal.
 			this.taskEventListeners.set(instance, [
-				() => instance.off(RooCodeEventName.TaskStarted, onTaskStarted),
-				() => instance.off(RooCodeEventName.TaskCompleted, onTaskCompleted),
-				() => instance.off(RooCodeEventName.TaskAborted, onTaskAborted),
-				() => instance.off(RooCodeEventName.TaskFocused, onTaskFocused),
-				() => instance.off(RooCodeEventName.TaskUnfocused, onTaskUnfocused),
-				() => instance.off(RooCodeEventName.TaskActive, onTaskActive),
-				() => instance.off(RooCodeEventName.TaskInteractive, onTaskInteractive),
-				() => instance.off(RooCodeEventName.TaskResumable, onTaskResumable),
-				() => instance.off(RooCodeEventName.TaskIdle, onTaskIdle),
-				() => instance.off(RooCodeEventName.TaskUserMessage, onTaskUserMessage),
-				() => instance.off(RooCodeEventName.TaskPaused, onTaskPaused),
-				() => instance.off(RooCodeEventName.TaskUnpaused, onTaskUnpaused),
-				() => instance.off(RooCodeEventName.TaskSpawned, onTaskSpawned),
-				() => instance.off(RooCodeEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated),
+				() => instance.off(ForgeFoxEventName.TaskStarted, onTaskStarted),
+				() => instance.off(ForgeFoxEventName.TaskCompleted, onTaskCompleted),
+				() => instance.off(ForgeFoxEventName.TaskAborted, onTaskAborted),
+				() => instance.off(ForgeFoxEventName.TaskFocused, onTaskFocused),
+				() => instance.off(ForgeFoxEventName.TaskUnfocused, onTaskUnfocused),
+				() => instance.off(ForgeFoxEventName.TaskActive, onTaskActive),
+				() => instance.off(ForgeFoxEventName.TaskInteractive, onTaskInteractive),
+				() => instance.off(ForgeFoxEventName.TaskResumable, onTaskResumable),
+				() => instance.off(ForgeFoxEventName.TaskIdle, onTaskIdle),
+				() => instance.off(ForgeFoxEventName.TaskUserMessage, onTaskUserMessage),
+				() => instance.off(ForgeFoxEventName.TaskPaused, onTaskPaused),
+				() => instance.off(ForgeFoxEventName.TaskUnpaused, onTaskUnpaused),
+				() => instance.off(ForgeFoxEventName.TaskSpawned, onTaskSpawned),
+				() => instance.off(ForgeFoxEventName.TaskTokenUsageUpdated, onTaskTokenUsageUpdated),
 			])
 		}
 
-		// Initialize Roo Code Cloud profile sync.
+		// Initialize ForgeFox Cloud profile sync.
 		if (CloudService.hasInstance()) {
 			this.initializeCloudProfileSync().catch((error) => {
 				this.log(`Failed to initialize cloud profile sync: ${error}`)
@@ -472,7 +472,7 @@ export class ClineProvider
 		// Add this cline instance into the stack that represents the order of
 		// all the called tasks.
 		this.clineStack.push(task)
-		task.emit(RooCodeEventName.TaskFocused)
+		task.emit(ForgeFoxEventName.TaskFocused)
 
 		// Perform special setup provider specific tasks.
 		await this.performPreparationTasks(task)
@@ -519,7 +519,7 @@ export class ClineProvider
 			const childTaskId = task.taskId
 			const parentTaskId = task.parentTaskId
 
-			task.emit(RooCodeEventName.TaskUnfocused)
+			task.emit(ForgeFoxEventName.TaskUnfocused)
 
 			try {
 				// Abort the running task and set isAbandoned to true so
@@ -1118,7 +1118,7 @@ export class ClineProvider
 
 			// Replace the task in the stack
 			this.clineStack[stackIndex] = task
-			task.emit(RooCodeEventName.TaskFocused)
+			task.emit(ForgeFoxEventName.TaskFocused)
 
 			// Perform preparation tasks and set up event listeners
 			await this.performPreparationTasks(task)
@@ -1259,14 +1259,15 @@ export class ClineProvider
 			</script>
 		`
 
+		// ForgeFox: Cloud services disabled - removed PostHog and Clerk from CSP.
 		const csp = [
 			"default-src 'none'",
 			`font-src ${webview.cspSource} data:`,
 			`style-src ${webview.cspSource} 'unsafe-inline' https://* http://${localServerUrl} http://0.0.0.0:${localPort}`,
-			`img-src ${webview.cspSource} https://storage.googleapis.com https://img.clerk.com data:`,
+			`img-src ${webview.cspSource} https://storage.googleapis.com data:`,
 			`media-src ${webview.cspSource}`,
-			`script-src 'unsafe-eval' ${webview.cspSource} https://* https://*.posthog.com http://${localServerUrl} http://0.0.0.0:${localPort} 'nonce-${nonce}'`,
-			`connect-src ${webview.cspSource} ${openRouterDomain} https://* https://*.posthog.com ws://${localServerUrl} ws://0.0.0.0:${localPort} http://${localServerUrl} http://0.0.0.0:${localPort}`,
+			`script-src 'unsafe-eval' ${webview.cspSource} https://* http://${localServerUrl} http://0.0.0.0:${localPort} 'nonce-${nonce}'`,
+			`connect-src ${webview.cspSource} ${openRouterDomain} https://* ws://${localServerUrl} ws://0.0.0.0:${localPort} http://${localServerUrl} http://0.0.0.0:${localPort}`,
 		]
 
 		return /*html*/ `
@@ -1283,7 +1284,7 @@ export class ClineProvider
 						window.AUDIO_BASE_URI = "${audioUri}"
 						window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 					</script>
-					<title>Roo Code</title>
+					<title>ForgeFox</title>
 				</head>
 				<body>
 					<div id="root"></div>
@@ -1354,7 +1355,7 @@ export class ClineProvider
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
             <meta name="theme-color" content="#000000">
-            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource} data:; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} https://storage.googleapis.com https://img.clerk.com data:; media-src ${webview.cspSource}; script-src ${webview.cspSource} 'wasm-unsafe-eval' 'nonce-${nonce}' https://ph.roocode.com 'strict-dynamic'; connect-src ${webview.cspSource} ${openRouterDomain} https://api.requesty.ai https://ph.roocode.com;">
+            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; font-src ${webview.cspSource} data:; style-src ${webview.cspSource} 'unsafe-inline'; img-src ${webview.cspSource} https://storage.googleapis.com data:; media-src ${webview.cspSource}; script-src ${webview.cspSource} 'wasm-unsafe-eval' 'nonce-${nonce}' 'strict-dynamic'; connect-src ${webview.cspSource} ${openRouterDomain} https://api.requesty.ai;">
             <link rel="stylesheet" type="text/css" href="${stylesUri}">
 			<link href="${codiconsUri}" rel="stylesheet" />
 			<script nonce="${nonce}">
@@ -1362,7 +1363,7 @@ export class ClineProvider
 				window.AUDIO_BASE_URI = "${audioUri}"
 				window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 			</script>
-            <title>Roo Code</title>
+            <title>ForgeFox</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -1396,7 +1397,7 @@ export class ClineProvider
 
 		if (task) {
 			TelemetryService.instance.captureModeSwitch(task.taskId, newMode)
-			task.emit(RooCodeEventName.TaskModeSwitched, task.taskId, newMode)
+			task.emit(ForgeFoxEventName.TaskModeSwitched, task.taskId, newMode)
 
 			try {
 				// Update the task history with the new mode first.
@@ -1424,7 +1425,7 @@ export class ClineProvider
 
 		await this.updateGlobalState("mode", newMode)
 
-		this.emit(RooCodeEventName.ModeChanged, newMode)
+		this.emit(ForgeFoxEventName.ModeChanged, newMode)
 
 		// If workspace lock is on, keep the current API config — don't load mode-specific config
 		const lockApiConfigAcrossModes = this.context.workspaceState.get("lockApiConfigAcrossModes", false)
@@ -1670,7 +1671,7 @@ export class ClineProvider
 		await this.postStateToWebview()
 
 		if (providerSettings.apiProvider) {
-			this.emit(RooCodeEventName.ProviderProfileChanged, { name, provider: providerSettings.apiProvider })
+			this.emit(ForgeFoxEventName.ProviderProfileChanged, { name, provider: providerSettings.apiProvider })
 		}
 	}
 
@@ -1686,21 +1687,21 @@ export class ClineProvider
 		// Get platform-specific application data directory
 		let mcpServersDir: string
 		if (process.platform === "win32") {
-			// Windows: %APPDATA%\Roo-Code\MCP
-			mcpServersDir = path.join(os.homedir(), "AppData", "Roaming", "Roo-Code", "MCP")
+			// Windows: %APPDATA%\ForgeFox\MCP
+			mcpServersDir = path.join(os.homedir(), "AppData", "Roaming", "ForgeFox", "MCP")
 		} else if (process.platform === "darwin") {
 			// macOS: ~/Documents/Cline/MCP
 			mcpServersDir = path.join(os.homedir(), "Documents", "Cline", "MCP")
 		} else {
 			// Linux: ~/.local/share/Cline/MCP
-			mcpServersDir = path.join(os.homedir(), ".local", "share", "Roo-Code", "MCP")
+			mcpServersDir = path.join(os.homedir(), ".local", "share", "ForgeFox", "MCP")
 		}
 
 		try {
 			await fs.mkdir(mcpServersDir, { recursive: true })
 		} catch (error) {
 			// Fallback to a relative path if directory creation fails
-			return path.join(os.homedir(), ".roo-code", "mcp")
+			return path.join(os.homedir(), ".forgefox", "mcp")
 		}
 		return mcpServersDir
 	}
@@ -2339,7 +2340,7 @@ export class ClineProvider
 			// undefined means no MDM policy, true means compliant, false means non-compliant
 			mdmCompliant: this.mdmService?.requiresCloudAuth() ? this.checkMdmCompliance() : undefined,
 			profileThresholds: profileThresholds ?? {},
-			cloudApiUrl: getRooCodeApiUrl(),
+			cloudApiUrl: getForgeFoxApiUrl(),
 			hasOpenedModeSelector: this.getGlobalState("hasOpenedModeSelector") ?? false,
 			lockApiConfigAcrossModes: lockApiConfigAcrossModes ?? false,
 			alwaysAllowFollowupQuestions: alwaysAllowFollowupQuestions ?? false,
@@ -2673,11 +2674,11 @@ export class ClineProvider
 		return this.contextProxy.getValue(key)
 	}
 
-	public async setValue<K extends keyof RooCodeSettings>(key: K, value: RooCodeSettings[K]) {
+	public async setValue<K extends keyof ForgeFoxSettings>(key: K, value: ForgeFoxSettings[K]) {
 		await this.contextProxy.setValue(key, value)
 	}
 
-	public getValue<K extends keyof RooCodeSettings>(key: K) {
+	public getValue<K extends keyof ForgeFoxSettings>(key: K) {
 		return this.contextProxy.getValue(key)
 	}
 
@@ -2685,7 +2686,7 @@ export class ClineProvider
 		return this.contextProxy.getValues()
 	}
 
-	public async setValues(values: RooCodeSettings) {
+	public async setValues(values: ForgeFoxSettings) {
 		await this.contextProxy.setValues(values)
 	}
 
@@ -2892,7 +2893,7 @@ export class ClineProvider
 		images?: string[],
 		parentTask?: Task,
 		options: CreateTaskOptions = {},
-		configuration: RooCodeSettings = {},
+		configuration: ForgeFoxSettings = {},
 	): Promise<Task> {
 		if (configuration) {
 			await this.setValues(configuration)
@@ -3352,7 +3353,7 @@ export class ClineProvider
 
 		// 7) Emit TaskDelegated (provider-level)
 		try {
-			this.emit(RooCodeEventName.TaskDelegated, parentTaskId, child.taskId)
+			this.emit(ForgeFoxEventName.TaskDelegated, parentTaskId, child.taskId)
 		} catch {
 			// non-fatal
 		}
@@ -3525,7 +3526,7 @@ export class ClineProvider
 
 		// 6) Emit TaskDelegationCompleted (provider-level)
 		try {
-			this.emit(RooCodeEventName.TaskDelegationCompleted, parentTaskId, childTaskId, completionResultSummary)
+			this.emit(ForgeFoxEventName.TaskDelegationCompleted, parentTaskId, childTaskId, completionResultSummary)
 		} catch {
 			// non-fatal
 		}
@@ -3553,7 +3554,7 @@ export class ClineProvider
 
 		// 9) Emit TaskDelegationResumed (provider-level)
 		try {
-			this.emit(RooCodeEventName.TaskDelegationResumed, parentTaskId, childTaskId)
+			this.emit(ForgeFoxEventName.TaskDelegationResumed, parentTaskId, childTaskId)
 		} catch {
 			// non-fatal
 		}

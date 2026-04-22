@@ -12,14 +12,17 @@ import {
 	extractApiProviderErrorProperties,
 	isConsecutiveMistakeError,
 	extractConsecutiveMistakeErrorProperties,
-} from "@roo-code/types"
+} from "@forgefox/types"
 
 import { BaseTelemetryClient } from "./BaseTelemetryClient"
 
 /**
- * PostHogTelemetryClient handles telemetry event tracking for the Roo Code extension.
+ * PostHogTelemetryClient handles telemetry event tracking for the ForgeFox extension.
  * Uses PostHog analytics to track user interactions and system events.
  * Respects user privacy settings and VSCode's global telemetry configuration.
+ *
+ * ForgeFox: Cloud services disabled - coming soon.
+ * All telemetry methods are no-ops since ph.forgefox.com is not available.
  */
 export class PostHogTelemetryClient extends BaseTelemetryClient {
 	private client: PostHog
@@ -36,7 +39,10 @@ export class PostHogTelemetryClient extends BaseTelemetryClient {
 			debug,
 		)
 
-		this.client = new PostHog(process.env.POSTHOG_API_KEY || "", { host: "https://ph.roocode.com" })
+		// ForgeFox: Cloud services disabled - PostHog telemetry is a no-op.
+		// Initialize with empty key and immediately opt out so no data is sent.
+		this.client = new PostHog("disabled", { host: "https://localhost" })
+		this.client.optOut()
 	}
 
 	/**
@@ -144,24 +150,10 @@ export class PostHogTelemetryClient extends BaseTelemetryClient {
 	 * user has opted in.
 	 * @param didUserOptIn Whether the user has explicitly opted into telemetry
 	 */
-	public override updateTelemetryState(didUserOptIn: boolean): void {
+	// ForgeFox: Cloud services disabled - telemetry always remains off.
+	public override updateTelemetryState(_didUserOptIn: boolean): void {
 		this.telemetryEnabled = false
-
-		// First check global telemetry level - telemetry should only be enabled when level is "all".
-		const telemetryLevel = vscode.workspace.getConfiguration("telemetry").get<string>("telemetryLevel", "all")
-		const globalTelemetryEnabled = telemetryLevel === "all"
-
-		// We only enable telemetry if global vscode telemetry is enabled.
-		if (globalTelemetryEnabled) {
-			this.telemetryEnabled = didUserOptIn
-		}
-
-		// Update PostHog client state based on telemetry preference.
-		if (this.telemetryEnabled) {
-			this.client.optIn()
-		} else {
-			this.client.optOut()
-		}
+		this.client.optOut()
 	}
 
 	public override async shutdown(): Promise<void> {

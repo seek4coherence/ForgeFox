@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react"
 
-import type { Experiments, ImageGenerationProvider } from "@roo-code/types"
+import type { Experiments, ImageGenerationProvider } from "@forgefox/types"
 
 import { EXPERIMENT_IDS, experimentConfigsMap } from "@roo/experiments"
 

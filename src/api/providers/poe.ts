@@ -9,8 +9,8 @@ import {
 	type ModelInfo,
 	type ReasoningEffortExtended,
 	ApiProviderError,
-} from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@forgefox/types"
+import { TelemetryService } from "@forgefox/telemetry"
 
 import { shouldUseReasoningBudget, shouldUseReasoningEffort, type ApiHandlerOptions } from "../../shared/api"
 

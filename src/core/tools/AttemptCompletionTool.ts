@@ -1,7 +1,7 @@
 import * as vscode from "vscode"
 
-import { RooCodeEventName, type HistoryItem } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+import { ForgeFoxEventName, type HistoryItem } from "@forgefox/types"
+import { TelemetryService } from "@forgefox/telemetry"
 
 import { Task } from "../task/Task"
 import { formatResponse } from "../prompts/responses"
@@ -202,7 +202,7 @@ export class AttemptCompletionTool extends BaseTool<"attempt_completion"> {
 		task.emitFinalTokenUsageUpdate()
 
 		TelemetryService.instance.captureTaskCompleted(task.taskId)
-		task.emit(RooCodeEventName.TaskCompleted, task.taskId, task.getTokenUsage(), task.toolUsage)
+		task.emit(ForgeFoxEventName.TaskCompleted, task.taskId, task.getTokenUsage(), task.toolUsage)
 	}
 }
 

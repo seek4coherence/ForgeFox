@@ -15,7 +15,7 @@ vi.mock("../../tools/validateToolUse", () => ({
 		),
 	),
 }))
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@forgefox/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureToolUsage: vi.fn(),

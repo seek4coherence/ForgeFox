@@ -1,8 +1,8 @@
-import type { RooCodeAPI } from "@roo-code/types"
+import type { ForgeFoxAPI } from "@forgefox/types"
 
 declare global {
 	// eslint-disable-next-line no-var
-	var api: RooCodeAPI
+	var api: ForgeFoxAPI
 }
 
 export {}

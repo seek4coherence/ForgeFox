@@ -1,5 +1,6 @@
 {
-	"name": "roo-code-nightly",
+	"name": "forgefox-nightly",
+	"publisher": "ForgeFox",
 	"version": "0.0.1",
 	"icon": "assets/icons/icon-nightly.png",
 	"scripts": {}

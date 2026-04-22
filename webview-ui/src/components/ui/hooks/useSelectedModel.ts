@@ -31,7 +31,7 @@ import {
 	isDynamicProvider,
 	isRetiredProvider,
 	getProviderDefaultModelId,
-} from "@roo-code/types"
+} from "@forgefox/types"
 
 import { useRouterModels } from "./useRouterModels"
 import { useOpenRouterModelProviders } from "./useOpenRouterModelProviders"

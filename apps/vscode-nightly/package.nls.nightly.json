@@ -1,7 +1,7 @@
 {
-	"extension.displayName": "Roo Code Nightly",
-	"views.contextMenu.label": "Roo Code Nightly",
-	"views.terminalMenu.label": "Roo Code Nightly",
-	"views.activitybar.title": "Roo Code Nightly",
-	"configuration.title": "Roo Code Nightly"
+	"extension.displayName": "ForgeFox Nightly",
+	"views.contextMenu.label": "ForgeFox Nightly",
+	"views.terminalMenu.label": "ForgeFox Nightly",
+	"views.activitybar.title": "ForgeFox Nightly",
+	"configuration.title": "ForgeFox Nightly"
 }

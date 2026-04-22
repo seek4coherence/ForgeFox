@@ -2,7 +2,7 @@ import { z } from "zod"
 import { useQuery } from "@tanstack/react-query"
 import { useFuzzyModelSearch } from "./use-fuzzy-model-search"
 
-export const rooCodeCloudModelSchema = z.object({
+export const forgeFoxCloudModelSchema = z.object({
 	object: z.literal("model"),
 	id: z.string(),
 	name: z.string(),
@@ -30,10 +30,10 @@ export const rooCodeCloudModelSchema = z.object({
 	deprecated: z.boolean().optional(),
 })
 
-export type RooCodeCloudModel = z.infer<typeof rooCodeCloudModelSchema>
+export type ForgeFoxCloudModel = z.infer<typeof forgeFoxCloudModelSchema>
 
-export const getRooCodeCloudModels = async (): Promise<RooCodeCloudModel[]> => {
-	const response = await fetch("https://api.roocode.com/proxy/v1/models")
+export const getForgeFoxCloudModels = async (): Promise<ForgeFoxCloudModel[]> => {
+	const response = await fetch("https://api.forgefox.com/proxy/v1/models")
 
 	if (!response.ok) {
 		return []
@@ -42,7 +42,7 @@ export const getRooCodeCloudModels = async (): Promise<RooCodeCloudModel[]> => {
 	const result = z
 		.object({
 			object: z.literal("list"),
-			data: z.array(rooCodeCloudModelSchema),
+			data: z.array(forgeFoxCloudModelSchema),
 		})
 		.safeParse(await response.json())
 
@@ -54,10 +54,10 @@ export const getRooCodeCloudModels = async (): Promise<RooCodeCloudModel[]> => {
 	return result.data.data.filter((model) => !model.deprecated).sort((a, b) => a.name.localeCompare(b.name))
 }
 
-export const useRooCodeCloudModels = () => {
+export const useForgeFoxCloudModels = () => {
 	const query = useQuery({
-		queryKey: ["getRooCodeCloudModels"],
-		queryFn: getRooCodeCloudModels,
+		queryKey: ["getForgeFoxCloudModels"],
+		queryFn: getForgeFoxCloudModels,
 	})
 
 	const { searchValue, setSearchValue, onFilter } = useFuzzyModelSearch(query.data)

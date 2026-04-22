@@ -1,8 +1,8 @@
 import { Anthropic } from "@anthropic-ai/sdk"
 import OpenAI from "openai"
 
-import { rooDefaultModelId, getApiProtocol, type ImageGenerationApiMethod } from "@roo-code/types"
-import { CloudService } from "@roo-code/cloud"
+import { rooDefaultModelId, getApiProtocol, type ImageGenerationApiMethod } from "@forgefox/types"
+import { CloudService } from "@forgefox/cloud"
 
 import { NativeToolCallParser } from "../../core/assistant-message/NativeToolCallParser"
 
@@ -44,18 +44,19 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 	constructor(options: ApiHandlerOptions) {
 		const sessionToken = options.rooApiKey ?? getSessionToken()
 
-		let baseURL = process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy"
+		let baseURL = process.env.FORGEFOX_PROVIDER_URL ?? "https://api.forgefox.com/proxy"
 
 		// Ensure baseURL ends with /v1 for OpenAI client, but don't duplicate it
 		if (!baseURL.endsWith("/v1")) {
 			baseURL = `${baseURL}/v1`
 		}
 
-		// Always construct the handler, even without a valid token.
-		// The provider-proxy server will return 401 if authentication fails.
+		// ForgeFox: Cloud services disabled - coming soon.
+		// The provider still constructs but will fail gracefully when used,
+		// since the cloud proxy at api.forgefox.com is not yet available.
 		super({
 			...options,
-			providerName: "Roo Code Cloud",
+			providerName: "ForgeFox Cloud",
 			baseURL, // Already has /v1 suffix
 			apiKey: sessionToken,
 			defaultProviderModelId: rooDefaultModelId,
@@ -65,9 +66,8 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		// Load dynamic models asynchronously - strip /v1 from baseURL for fetcher
 		this.fetcherBaseURL = baseURL.endsWith("/v1") ? baseURL.slice(0, -3) : baseURL
 
-		this.loadDynamicModels(this.fetcherBaseURL, sessionToken).catch((error) => {
-			console.error("[RooHandler] Failed to load dynamic models:", error)
-		})
+		// ForgeFox: Cloud services disabled - skip dynamic model loading since the API is not available.
+		// this.loadDynamicModels(this.fetcherBaseURL, sessionToken).catch(...)
 	}
 
 	protected override createStream(
@@ -127,6 +127,12 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 		messages: Anthropic.Messages.MessageParam[],
 		metadata?: ApiHandlerCreateMessageMetadata,
 	): ApiStream {
+		// ForgeFox: Cloud services disabled - coming soon.
+		// The ForgeFox Cloud proxy is not yet available.
+		throw new Error(
+			"ForgeFox Cloud is not yet available. Please select a different provider (e.g., OpenAI, Anthropic, Google) in your API profile settings.",
+		)
+
 		try {
 			// Reset reasoning_details accumulator for this request
 			this.currentReasoningDetails = []
@@ -387,7 +393,7 @@ export class RooHandler extends BaseOpenAiCompatibleProvider<string> {
 	}
 
 	/**
-	 * Generate an image using Roo Code Cloud's image generation API
+	 * Generate an image using ForgeFox Cloud's image generation API
 	 * @param prompt The text prompt for image generation
 	 * @param model The model to use for generation
 	 * @param inputImage Optional base64 encoded input image data URL

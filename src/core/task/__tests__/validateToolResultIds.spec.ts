@@ -1,5 +1,5 @@
 import { Anthropic } from "@anthropic-ai/sdk"
-import { TelemetryService } from "@roo-code/telemetry"
+import { TelemetryService } from "@forgefox/telemetry"
 import {
 	validateAndFixToolResultIds,
 	ToolResultIdMismatchError,
@@ -7,7 +7,7 @@ import {
 } from "../validateToolResultIds"
 
 // Mock TelemetryService
-vi.mock("@roo-code/telemetry", () => ({
+vi.mock("@forgefox/telemetry", () => ({
 	TelemetryService: {
 		hasInstance: vi.fn(() => true),
 		instance: {

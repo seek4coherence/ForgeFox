@@ -5,12 +5,12 @@ import {
 	type AuthService,
 	type SettingsService,
 	TelemetryEventName,
-	rooCodeTelemetryEventSchema,
+	forgeFoxTelemetryEventSchema,
 	TelemetryPropertiesProvider,
 	TelemetryEventSubscription,
-} from "@roo-code/types"
+} from "@forgefox/types"
 
-import { getRooCodeApiUrl } from "./config.js"
+import { getForgeFoxApiUrl } from "./config.js"
 import type { RetryQueue } from "./retry-queue/index.js"
 
 abstract class BaseTelemetryClient implements TelemetryClient {
@@ -111,7 +111,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			return
 		}
 
-		const url = `${getRooCodeApiUrl()}/api/${path}`
+		const url = `${getForgeFoxApiUrl()}/api/${path}`
 		const fetchOptions: RequestInit = {
 			...options,
 			headers: {
@@ -172,7 +172,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 			console.info(`[TelemetryClient#capture] ${JSON.stringify(payload)}`)
 		}
 
-		const result = rooCodeTelemetryEventSchema.safeParse(payload)
+		const result = forgeFoxTelemetryEventSchema.safeParse(payload)
 
 		if (!result.success) {
 			console.error(
@@ -235,7 +235,7 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 				)
 			}
 
-			const url = `${getRooCodeApiUrl()}/api/events/backfill`
+			const url = `${getForgeFoxApiUrl()}/api/events/backfill`
 			const fetchOptions: RequestInit = {
 				method: "POST",
 				headers: {
@@ -263,12 +263,9 @@ export class CloudTelemetryClient extends BaseTelemetryClient {
 
 	public override updateTelemetryState(_didUserOptIn: boolean) {}
 
+	// ForgeFox: Cloud services disabled - telemetry always returns false.
 	public override isTelemetryEnabled(): boolean {
-		if (process.env.ROO_CODE_DISABLE_TELEMETRY === "1") {
-			return false
-		}
-
-		return true
+		return false
 	}
 
 	protected override isEventCapturable(eventName: TelemetryEventName): boolean {

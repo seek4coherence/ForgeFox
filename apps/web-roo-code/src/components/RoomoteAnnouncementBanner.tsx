@@ -14,7 +14,7 @@ export function RoomoteAnnouncementBanner() {
 		<div className={`relative overflow-hidden bg-[#d8f14b] text-black ${dmSans.className}`}>
 			<div className="relative flex flex-col items-center justify-center gap-3 px-6 py-5 sm:py-6">
 				<p className="text-base sm:text-lg md:text-xl font-extrabold tracking-tight">
-					The Roo Code team just launched something new.
+					The ForgeFox team just launched something new.
 				</p>
 				<a
 					href="https://roomote.dev"

@@ -1,6 +1,6 @@
-import type { ToolName, ModeConfig, ExperimentId, GroupOptions, GroupEntry } from "@roo-code/types"
-import { toolNames as validToolNames } from "@roo-code/types"
-import { customToolRegistry } from "@roo-code/core"
+import type { ToolName, ModeConfig, ExperimentId, GroupOptions, GroupEntry } from "@forgefox/types"
+import { toolNames as validToolNames } from "@forgefox/types"
+import { customToolRegistry } from "@forgefox/core"
 
 import { type Mode, FileRestrictionError, getModeBySlug, getGroupName } from "../../shared/modes"
 import { EXPERIMENT_IDS } from "../../shared/experiments"

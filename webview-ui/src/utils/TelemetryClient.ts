@@ -1,29 +1,21 @@
+// ForgeFox: Cloud services disabled - posthog import kept for type compatibility but not initialized.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import posthog from "posthog-js"
 
-import type { TelemetrySetting } from "@roo-code/types"
+import type { TelemetrySetting } from "@forgefox/types"
 
+/**
+ * ForgeFox: Cloud services disabled - coming soon.
+ * PostHog telemetry is a complete no-op since ph.forgefox.com is not available.
+ * The class interface is preserved to avoid breaking imports.
+ */
 class TelemetryClient {
 	private static instance: TelemetryClient
 	private static telemetryEnabled: boolean = false
 
-	public updateTelemetryState(telemetrySetting: TelemetrySetting, apiKey?: string, distinctId?: string) {
-		posthog.reset()
-
-		if (telemetrySetting !== "disabled" && apiKey && distinctId) {
-			TelemetryClient.telemetryEnabled = true
-
-			posthog.init(apiKey, {
-				api_host: "https://ph.roocode.com",
-				ui_host: "https://us.posthog.com",
-				persistence: "localStorage",
-				loaded: () => posthog.identify(distinctId),
-				capture_pageview: false,
-				capture_pageleave: false,
-				autocapture: false,
-			})
-		} else {
-			TelemetryClient.telemetryEnabled = false
-		}
+	public updateTelemetryState(_telemetrySetting: TelemetrySetting, _apiKey?: string, _distinctId?: string) {
+		// ForgeFox: Cloud services disabled - do not initialize PostHog.
+		TelemetryClient.telemetryEnabled = false
 	}
 
 	public static getInstance(): TelemetryClient {
@@ -34,14 +26,8 @@ class TelemetryClient {
 		return TelemetryClient.instance
 	}
 
-	public capture(eventName: string, properties?: Record<string, any>) {
-		if (TelemetryClient.telemetryEnabled) {
-			try {
-				posthog.capture(eventName, properties)
-			} catch (_error) {
-				// Silently fail if there's an error capturing an event.
-			}
-		}
+	public capture(_eventName: string, _properties?: Record<string, any>) {
+		// ForgeFox: Cloud services disabled - telemetry capture is a no-op.
 	}
 }
 

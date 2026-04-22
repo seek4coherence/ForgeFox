@@ -17,14 +17,14 @@ import {
 	type WebviewMessage,
 	type EditQueuedMessagePayload,
 	TelemetryEventName,
-	RooCodeSettings,
+	ForgeFoxSettings,
 	ExperimentId,
 	checkoutDiffPayloadSchema,
 	checkoutRestorePayloadSchema,
-} from "@roo-code/types"
-import { customToolRegistry } from "@roo-code/core"
-import { CloudService } from "@roo-code/cloud"
-import { TelemetryService } from "@roo-code/telemetry"
+} from "@forgefox/types"
+import { customToolRegistry } from "@forgefox/core"
+import { CloudService } from "@forgefox/cloud"
+import { TelemetryService } from "@forgefox/telemetry"
 
 import { type ApiMessage } from "../task-persistence/apiMessages"
 import { saveTaskMessages } from "../task-persistence"
@@ -742,7 +742,7 @@ export const webviewMessageHandler = async (
 						}
 					}
 
-					await provider.contextProxy.setValue(key as keyof RooCodeSettings, newValue)
+					await provider.contextProxy.setValue(key as keyof ForgeFoxSettings, newValue)
 				}
 
 				await provider.postStateToWebview()
@@ -994,7 +994,7 @@ export const webviewMessageHandler = async (
 					key: "roo",
 					options: {
 						provider: "roo",
-						baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy",
+						baseUrl: process.env.FORGEFOX_PROVIDER_URL ?? "https://api.forgefox.com/proxy",
 						apiKey: CloudService.hasInstance()
 							? CloudService.instance.authService?.getSessionToken()
 							: undefined,
@@ -1134,7 +1134,7 @@ export const webviewMessageHandler = async (
 			try {
 				const rooOptions = {
 					provider: "roo" as const,
-					baseUrl: process.env.ROO_CODE_PROVIDER_URL ?? "https://api.roocode.com/proxy",
+					baseUrl: process.env.FORGEFOX_PROVIDER_URL ?? "https://api.forgefox.com/proxy",
 					apiKey: CloudService.hasInstance()
 						? CloudService.instance.authService?.getSessionToken()
 						: undefined,
@@ -1366,7 +1366,7 @@ export const webviewMessageHandler = async (
 			break
 		}
 		case "openKeyboardShortcuts": {
-			// Open VSCode keyboard shortcuts settings and optionally filter to show the Roo Code commands
+			// Open VSCode keyboard shortcuts settings and optionally filter to show the ForgeFox commands
 			const searchQuery = message.text || ""
 			if (searchQuery) {
 				// Open with a search query pre-filled

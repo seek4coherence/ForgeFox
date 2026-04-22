@@ -1,8 +1,8 @@
 import { Anthropic } from "@anthropic-ai/sdk"
 import OpenAI from "openai"
 
-import { type XAIModelId, xaiDefaultModelId, xaiModels, ApiProviderError } from "@roo-code/types"
-import { TelemetryService } from "@roo-code/telemetry"
+import { type XAIModelId, xaiDefaultModelId, xaiModels, ApiProviderError } from "@forgefox/types"
+import { TelemetryService } from "@forgefox/telemetry"
 
 import type { ApiHandlerOptions } from "../../shared/api"
 

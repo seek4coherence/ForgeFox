@@ -1,4 +1,4 @@
-import type { OpenAiCodexRateLimitInfo } from "@roo-code/types"
+import type { OpenAiCodexRateLimitInfo } from "@forgefox/types"
 
 const WHAM_USAGE_URL = "https://chatgpt.com/backend-api/wham/usage"
 

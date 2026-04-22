@@ -1,4 +1,4 @@
-// pnpm --filter roo-cline test api/providers/__tests__/openrouter.spec.ts
+// pnpm --filter forgefox test api/providers/__tests__/openrouter.spec.ts
 
 vitest.mock("vscode", () => ({}))
 
@@ -14,7 +14,7 @@ vitest.mock("delay", () => ({ default: vitest.fn(() => Promise.resolve()) }))
 
 const mockCaptureException = vitest.fn()
 
-vitest.mock("@roo-code/telemetry", () => ({
+vitest.mock("@forgefox/telemetry", () => ({
 	TelemetryService: {
 		instance: {
 			captureException: (...args: unknown[]) => mockCaptureException(...args),
@@ -100,9 +100,9 @@ describe("OpenRouterHandler", () => {
 			baseURL: "https://openrouter.ai/api/v1",
 			apiKey: mockOptions.openRouterApiKey,
 			defaultHeaders: {
-				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-				"X-Title": "Roo Code",
-				"User-Agent": `RooCode/${Package.version}`,
+				"HTTP-Referer": "https://www.BusinessEdgeAnalytics.com",
+				"X-Title": "ForgeFox",
+				"User-Agent": `ForgeFox/${Package.version}`,
 			},
 		})
 	})
