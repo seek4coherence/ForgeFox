@@ -1,19 +1,19 @@
-# @roo-code/cli
+# @forgefox/cli
 
-Command Line Interface for Roo Code - Run the Roo Code agent from the terminal without VSCode.
+Command Line Interface for ForgeFox - Run the ForgeFox agent from the terminal without VSCode.
 
 ## Overview
 
-This CLI uses the `@roo-code/vscode-shim` package to provide a VSCode API compatibility layer, allowing the main Roo Code extension to run in a Node.js environment.
+This CLI uses the `@forgefox/vscode-shim` package to provide a VSCode API compatibility layer, allowing the main ForgeFox extension to run in a Node.js environment.
 
 ## Installation
 
 ### Quick Install (Recommended)
 
-Install the Roo Code CLI with a single command:
+Install the ForgeFox CLI with a single command:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/RooCodeInc/Roo-Code/main/apps/cli/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/seek4coherence/Roo-Code/main/apps/cli/install.sh | sh
 ```
 
 **Requirements:**
@@ -30,7 +30,7 @@ ROO_INSTALL_DIR=/opt/roo-code ROO_BIN_DIR=/usr/local/bin curl -fsSL ... | sh
 **Install a specific version:**
 
 ```bash
-ROO_VERSION=0.1.0 curl -fsSL https://raw.githubusercontent.com/RooCodeInc/Roo-Code/main/apps/cli/install.sh | sh
+ROO_VERSION=0.1.0 curl -fsSL https://raw.githubusercontent.com/seek4coherence/Roo-Code/main/apps/cli/install.sh | sh
 ```
 
 ### Updating
@@ -38,7 +38,7 @@ ROO_VERSION=0.1.0 curl -fsSL https://raw.githubusercontent.com/RooCodeInc/Roo-Co
 Re-run the install script to update to the latest version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/RooCodeInc/Roo-Code/main/apps/cli/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/seek4coherence/Roo-Code/main/apps/cli/install.sh | sh
 ```
 
 Or run:
@@ -65,7 +65,7 @@ pnpm install
 pnpm --filter roo-cline bundle
 
 # Build the CLI.
-pnpm --filter @roo-code/cli build
+pnpm --filter @forgefox/cli build
 ```
 
 ## Usage
@@ -130,12 +130,12 @@ printf '{"command":"start","requestId":"1","prompt":"1+1=?"}\n' | roo --print --
 printf '{"command":"start","requestId":"1","taskId":"018f7fc8-7c96-7f7c-98aa-2ec4ff7f6d87","prompt":"1+1=?"}\n' | roo --print --stdin-prompt-stream --output-format stream-json
 ```
 
-### Roo Code Cloud Authentication
+### ForgeFox Cloud Authentication
 
-To use Roo Code Cloud features (like the provider proxy), you need to authenticate:
+To use ForgeFox Cloud features (like the provider proxy), you need to authenticate:
 
 ```bash
-# Log in to Roo Code Cloud (opens browser)
+# Log in to ForgeFox Cloud (opens browser)
 roo auth login
 
 # Check authentication status
@@ -147,7 +147,7 @@ roo auth logout
 
 The `auth login` command:
 
-1. Opens your browser to authenticate with Roo Code Cloud
+1. Opens your browser to authenticate with ForgeFox Cloud
 2. Receives a secure token via localhost callback
 3. Stores the token in `~/.config/roo/credentials.json`
 
@@ -157,7 +157,7 @@ Tokens are valid for 90 days. The CLI will prompt you to re-authenticate when yo
 
 ```
 ┌──────┐         ┌─────────┐         ┌───────────────┐
-│  CLI │         │ Browser │         │ Roo Code Cloud│
+│  CLI │         │ Browser │         │ ForgeFox Cloud│
 └──┬───┘         └────┬────┘         └───────┬───────┘
    │                  │                      │
    │ Open auth URL    │                      │
@@ -202,7 +202,7 @@ Tokens are valid for 90 days. The CLI will prompt you to re-authenticate when yo
 
 | Command           | Description                        |
 | ----------------- | ---------------------------------- |
-| `roo auth login`  | Authenticate with Roo Code Cloud   |
+| `roo auth login`  | Authenticate with ForgeFox Cloud   |
 | `roo auth logout` | Clear stored authentication token  |
 | `roo auth status` | Show current authentication status |
 
@@ -223,7 +223,7 @@ The CLI will look for API keys in environment variables if not provided via `--a
 
 | Variable          | Description                                                          |
 | ----------------- | -------------------------------------------------------------------- |
-| `ROO_WEB_APP_URL` | Override the Roo Code Cloud URL (default: `https://app.roocode.com`) |
+| `ROO_WEB_APP_URL` | Override the ForgeFox Cloud URL (default: `https://app.www.BusinessEdgeAnalytics.com`) |
 
 ## Architecture
 
@@ -255,7 +255,7 @@ The CLI will look for API keys in environment variables if not provided via `--a
 
 2. **ExtensionHost** (`extension-host.ts`):
 
-    - Creates a VSCode API mock using `@roo-code/vscode-shim`
+    - Creates a VSCode API mock using `@forgefox/vscode-shim`
     - Intercepts `require('vscode')` to return the mock
     - Loads and activates the extension bundle
     - Manages bidirectional message flow
@@ -283,7 +283,7 @@ pnpm lint
 By default the `start` script points `ROO_CODE_PROVIDER_URL` at `http://localhost:8080/proxy` for local development. To point at the production API instead, override the environment variable:
 
 ```bash
-ROO_CODE_PROVIDER_URL=https://api.roocode.com/proxy pnpm dev --provider roo --api-key $ROO_API_KEY --print "Hello"
+ROO_CODE_PROVIDER_URL=https://api.www.BusinessEdgeAnalytics.com/proxy pnpm dev --provider roo --api-key $ROO_API_KEY --print "Hello"
 ```
 
 ## Releasing

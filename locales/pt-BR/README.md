@@ -2,20 +2,20 @@
   <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline"><img src="https://img.shields.io/badge/VS_Code_Marketplace-007ACC?style=flat&logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace"></a>
   <a href="https://x.com/roocode"><img src="https://img.shields.io/badge/roocode-000000?style=flat&logo=x&logoColor=white" alt="X"></a>
   <a href="https://youtube.com/@roocodeyt?feature=shared"><img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=youtube&logoColor=white" alt="YouTube"></a>
-  <a href="https://discord.gg/roocode"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
-  <a href="https://www.reddit.com/r/RooCode/"><img src="https://img.shields.io/badge/Join%20r%2FRooCode-FF4500?style=flat&logo=reddit&logoColor=white" alt="Join r/RooCode"></a>
+  <a href="https://www.BusinessEdgeAnalytics.com"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Join Discord"></a>
+  <a href="https://www.reddit.com/r/ForgeFox/"><img src="https://img.shields.io/badge/Join%20r%2FRooCode-FF4500?style=flat&logo=reddit&logoColor=white" alt="Join r/RooCode"></a>
 </p>
 <p align="center">
-  <em>Obtenha ajuda rápida → <a href="https://discord.gg/roocode">Junte-se ao Discord</a> • Prefere assíncrono? → <a href="https://www.reddit.com/r/RooCode/">Junte-se ao r/RooCode</a></em>
+  <em>Obtenha ajuda rápida → <a href="https://www.BusinessEdgeAnalytics.com">Junte-se ao Discord</a> • Prefere assíncrono? → <a href="https://www.reddit.com/r/ForgeFox/">Junte-se ao r/RooCode</a></em>
 </p>
 
-# Roo Code
+# ForgeFox
 
 > Seu time de desenvolvimento com IA, direto no seu editor
 
 ## Novidades na v3.52.0
 
-- Adicionamos o Poe como provedor de IA para você acessar os modelos do Poe diretamente no Roo Code.
+- Adicionamos o Poe como provedor de IA para você acessar os modelos do Poe diretamente no ForgeFox.
 - Melhoramos o provedor xAI com uma migração para a Responses API, utilitários de transformação reutilizáveis e padrões atualizados do Grok-4.20.
 - Corrigimos as listagens de modelos do MiniMax e o tratamento da janela de contexto para uma configuração mais confiável.
 
@@ -45,7 +45,7 @@
 
 ---
 
-## O que o Roo Code pode fazer por VOCÊ?
+## O que o ForgeFox pode fazer por VOCÊ?
 
 - Gerar código a partir de descrições em linguagem natural
 - Adapte-se com os Modos: Código, Arquiteto, Pergunta, Depuração e Modos Personalizados
@@ -57,7 +57,7 @@
 
 ## Modos
 
-O Roo Code se adapta à sua maneira de trabalhar, e não o contrário:
+O ForgeFox se adapta à sua maneira de trabalhar, e não o contrário:
 
 - Modo Código: codificação diária, edições e operações de arquivo
 - Modo Arquiteto: planeje sistemas, especificações e migrações
@@ -65,7 +65,7 @@ O Roo Code se adapta à sua maneira de trabalhar, e não o contrário:
 - Modo Depuração: rastreie problemas, adicione logs, isole as causas raiz
 - Modos Personalizados: crie modos especializados para sua equipe ou fluxo de trabalho
 
-Saiba mais: [Usar Modos](https://docs.roocode.com/basic-usage/using-modes) • [Modos personalizados](https://docs.roocode.com/advanced-usage/custom-modes)
+Saiba mais: [Usar Modos](https://docs.www.BusinessEdgeAnalytics.com/basic-usage/using-modes) • [Modos personalizados](https://docs.www.BusinessEdgeAnalytics.com/advanced-usage/custom-modes)
 
 ## Vídeos de tutorial e recursos
 
@@ -73,22 +73,22 @@ Saiba mais: [Usar Modos](https://docs.roocode.com/basic-usage/using-modes) • [
 
 |                                                                                                                                                                             |                                                                                                                                                                           |                                                                                                                                                                                   |
 | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-| <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>Instalando o Roo Code</b> | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>Configurando perfis</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>Indexação da base de código</b> |
+| <a href="https://www.youtube.com/watch?v=Mcq3r1EPZ-4"><img src="https://img.youtube.com/vi/Mcq3r1EPZ-4/maxresdefault.jpg" width="100%"></a><br><b>Instalando o ForgeFox</b> | <a href="https://www.youtube.com/watch?v=ZBML8h5cCgo"><img src="https://img.youtube.com/vi/ZBML8h5cCgo/maxresdefault.jpg" width="100%"></a><br><b>Configurando perfis</b> | <a href="https://www.youtube.com/watch?v=r1bpod1VWhg"><img src="https://img.youtube.com/vi/r1bpod1VWhg/maxresdefault.jpg" width="100%"></a><br><b>Indexação da base de código</b> |
 | <a href="https://www.youtube.com/watch?v=iiAv1eKOaxk"><img src="https://img.youtube.com/vi/iiAv1eKOaxk/maxresdefault.jpg" width="100%"></a><br><b>Modos personalizados</b>  |     <a href="https://www.youtube.com/watch?v=Ho30nyY332E"><img src="https://img.youtube.com/vi/Ho30nyY332E/maxresdefault.jpg" width="100%"></a><br><b>Checkpoints</b>     |  <a href="https://www.youtube.com/watch?v=HmnNSasv7T8"><img src="https://img.youtube.com/vi/HmnNSasv7T8/maxresdefault.jpg" width="100%"></a><br><b>Gerenciamento de Contexto</b>  |
 
 </div>
 <p align="center">
-<a href="https://docs.roocode.com/tutorial-videos">Mais vídeos rápidos de tutorial e recursos...</a>
+<a href="https://docs.www.BusinessEdgeAnalytics.com/tutorial-videos">Mais vídeos rápidos de tutorial e recursos...</a>
 </p>
 
 ## Recursos
 
-- **[Documentação](https://docs.roocode.com):** O guia oficial para instalar, configurar e dominar o Roo Code.
+- **[Documentação](https://docs.www.BusinessEdgeAnalytics.com):** O guia oficial para instalar, configurar e dominar o ForgeFox.
 - **[Canal do YouTube](https://youtube.com/@roocodeyt?feature=shared):** Assista a tutoriais e veja os recursos em ação.
-- **[Servidor do Discord](https://discord.gg/roocode):** Junte-se à comunidade para ajuda e discussão em tempo real.
-- **[Comunidade do Reddit](https://www.reddit.com/r/RooCode):** Compartilhe suas experiências e veja o que os outros estão construindo.
-- **[Issues do GitHub](https://github.com/RooCodeInc/Roo-Code/issues):** Relate bugs e acompanhe o desenvolvimento.
-- **[Solicitações de recursos](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Tem uma ideia? Compartilhe com os desenvolvedores.
+- **[Servidor do Discord](https://www.BusinessEdgeAnalytics.com):** Junte-se à comunidade para ajuda e discussão em tempo real.
+- **[Comunidade do Reddit](https://www.reddit.com/r/ForgeFox):** Compartilhe suas experiências e veja o que os outros estão construindo.
+- **[Issues do GitHub](https://github.com/seek4coherence/ForgeFox/issues):** Relate bugs e acompanhe o desenvolvimento.
+- **[Solicitações de recursos](https://github.com/seek4coherence/ForgeFox/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop):** Tem uma ideia? Compartilhe com os desenvolvedores.
 
 ---
 
@@ -97,7 +97,7 @@ Saiba mais: [Usar Modos](https://docs.roocode.com/basic-usage/using-modes) • [
 1. **Clone** o repositório:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/seek4coherence/ForgeFox.git
 ```
 
 2. **Instale as dependências**:
@@ -108,13 +108,13 @@ pnpm install
 
 3. **Execute a extensão**:
 
-Existem várias maneiras de executar a extensão Roo Code:
+Existem várias maneiras de executar a extensão ForgeFox:
 
 ### Modo de Desenvolvimento (F5)
 
 Para desenvolvimento ativo, use a depuração incorporada do VSCode:
 
-Pressione `F5` (ou vá para **Executar** → **Iniciar Depuração**) no VSCode. Isso abrirá uma nova janela do VSCode com a extensão Roo Code em execução.
+Pressione `F5` (ou vá para **Executar** → **Iniciar Depuração**) no VSCode. Isso abrirá uma nova janela do VSCode com a extensão ForgeFox em execução.
 
 - As alterações na visualização da web aparecerão imediatamente.
 - As alterações na extensão principal também serão recarregadas automaticamente.
@@ -162,7 +162,7 @@ Usamos [changesets](https://github.com/changesets/changesets) para versionamento
 
 ## Isenção de responsabilidade
 
-**Observe** que a Roo Code, Inc. **não** faz representações ou garantias em relação a qualquer código, modelos ou outras ferramentas fornecidas ou disponibilizadas em conexão com o Roo Code, quaisquer ferramentas de terceiros associadas ou quaisquer saídas resultantes. Você assume **todos os riscos** associados ao uso de tais ferramentas ou saídas; tais ferramentas são fornecidas **"COMO ESTÃO"** e **"CONFORME DISPONÍVEIS"**. Tais riscos podem incluir, sem limitação, violação de propriedade intelectual, vulnerabilidades ou ataques cibernéticos, viés, imprecisões, erros, defeitos, vírus, tempo de inatividade, perda ou dano de propriedade e/ou lesões pessoais. Você é o único responsável pelo uso de tais ferramentas ou saídas (incluindo, sem limitação, a legalidade, adequação e resultados das mesmas).
+**Observe** que a ForgeFox, Inc. **não** faz representações ou garantias em relação a qualquer código, modelos ou outras ferramentas fornecidas ou disponibilizadas em conexão com o ForgeFox, quaisquer ferramentas de terceiros associadas ou quaisquer saídas resultantes. Você assume **todos os riscos** associados ao uso de tais ferramentas ou saídas; tais ferramentas são fornecidas **"COMO ESTÃO"** e **"CONFORME DISPONÍVEIS"**. Tais riscos podem incluir, sem limitação, violação de propriedade intelectual, vulnerabilidades ou ataques cibernéticos, viés, imprecisões, erros, defeitos, vírus, tempo de inatividade, perda ou dano de propriedade e/ou lesões pessoais. Você é o único responsável pelo uso de tais ferramentas ou saídas (incluindo, sem limitação, a legalidade, adequação e resultados das mesmas).
 
 ---
 
@@ -174,8 +174,8 @@ Adoramos contribuições da comunidade! Comece lendo nosso [CONTRIBUTING.md](CON
 
 ## Licença
 
-[Apache 2.0 © 2025 Roo Code, Inc.](../../LICENSE)
+[Apache 2.0 © 2025 ForgeFox, Inc.](../../LICENSE)
 
 ---
 
-**Aproveite o Roo Code!** Quer você o mantenha na coleira curta ou o deixe perambular autonomamente, mal podemos esperar para ver o que você vai construir. Se tiver dúvidas ou ideias de recursos, passe na nossa [comunidade do Reddit](https://www.reddit.com/r/RooCode/) ou no [Discord](https://discord.gg/roocode). Feliz codificação!
+**Aproveite o ForgeFox!** Quer você o mantenha na coleira curta ou o deixe perambular autonomamente, mal podemos esperar para ver o que você vai construir. Se tiver dúvidas ou ideias de recursos, passe na nossa [comunidade do Reddit](https://www.reddit.com/r/ForgeFox/) ou no [Discord](https://www.BusinessEdgeAnalytics.com). Feliz codificação!

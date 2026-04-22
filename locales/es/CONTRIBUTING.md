@@ -11,9 +11,9 @@
 </sub>
 </div>
 
-# Contribuir a Roo Code
+# Contribuir a ForgeFox
 
-Roo Code es un proyecto impulsado por la comunidad y valoramos profundamente cada contribución. Para agilizar la colaboración, operamos con un [enfoque de "primero la incidencia"](#enfoque-de-primero-la-incidencia), lo que significa que todas las [solicitudes de extracción (PR)](#envío-de-una-solicitud-de-extracción) deben estar primero vinculadas a una incidencia de GitHub. Por favor, revise esta guía detenidamente.
+ForgeFox es un proyecto impulsado por la comunidad y valoramos profundamente cada contribución. Para agilizar la colaboración, operamos con un [enfoque de "primero la incidencia"](#enfoque-de-primero-la-incidencia), lo que significa que todas las [solicitudes de extracción (PR)](#envío-de-una-solicitud-de-extracción) deben estar primero vinculadas a una incidencia de GitHub. Por favor, revise esta guía detenidamente.
 
 ## Tabla de contenidos
 
@@ -52,10 +52,10 @@ Nuestra hoja de ruta guía la dirección del proyecto. Alinee sus contribuciones
 
 Mencione la alineación con estas áreas en sus solicitudes de extracción.
 
-### 3. Únase a la comunidad de Roo Code
+### 3. Únase a la comunidad de ForgeFox
 
 - **Principal:** Únase a nuestro [Discord](https://discord.gg/roocode) y envíe un mensaje directo a **Hannes Rudolph (`hrudolph`)**.
-- **Alternativa:** Los colaboradores experimentados pueden participar directamente a través de [Proyectos de GitHub](https://github.com/orgs/RooCodeInc/projects/1).
+- **Alternativa:** Los colaboradores experimentados pueden participar directamente a través de [Proyectos de GitHub](https://github.com/orgs/seek4coherence/projects/1).
 
 ## Encontrar y planificar su contribución
 
@@ -69,7 +69,7 @@ Mencione la alineación con estas áreas en sus solicitudes de extracción.
 
 Todas las contribuciones comienzan con una incidencia de GitHub utilizando nuestras plantillas simplificadas.
 
-- **Compruebe las incidencias existentes**: busque en [Incidencias de GitHub](https://github.com/RooCodeInc/Roo-Code/issues).
+- **Compruebe las incidencias existentes**: busque en [Incidencias de GitHub](https://github.com/seek4coherence/ForgeFox/issues).
 - **Cree una incidencia** utilizando:
     - **Mejoras:** plantilla "Solicitud de mejora" (lenguaje sencillo centrado en el beneficio del usuario).
     - **Errores:** plantilla "Informe de error" (reproducción mínima + esperado vs. real + versión).
@@ -78,17 +78,17 @@ Todas las contribuciones comienzan con una incidencia de GitHub utilizando nuest
 
 ### Decidir en qué trabajar
 
-- Consulte el [Proyecto de GitHub](https://github.com/orgs/RooCodeInc/projects/1) para ver las incidencias "Incidencia [Sin asignar]".
-- Para la documentación, visite [Documentos de Roo Code](https://github.com/RooCodeInc/Roo-Code-Docs).
+- Consulte el [Proyecto de GitHub](https://github.com/orgs/seek4coherence/projects/1) para ver las incidencias "Incidencia [Sin asignar]".
+- Para la documentación, visite [Documentos de ForgeFox](https://github.com/seek4coherence/ForgeFox-Docs).
 
 ### Informar de errores
 
 - Compruebe primero si existen informes.
-- Cree un nuevo error utilizando la [plantilla "Informe de error"](https://github.com/RooCodeInc/Roo-Code/issues/new/choose) con:
+- Cree un nuevo error utilizando la [plantilla "Informe de error"](https://github.com/seek4coherence/ForgeFox/issues/new/choose) con:
     - Pasos de reproducción claros y numerados
     - Resultado esperado vs. real
-    - Versión de Roo Code (obligatorio); proveedor/modelo de API si es relevante
-- **Problemas de seguridad**: informe de forma privada a través de [avisos de seguridad](https://github.com/RooCodeInc/Roo-Code/security/advisories/new).
+    - Versión de ForgeFox (obligatorio); proveedor/modelo de API si es relevante
+- **Problemas de seguridad**: informe de forma privada a través de [avisos de seguridad](https://github.com/seek4coherence/ForgeFox/security/advisories/new).
 
 ## Proceso de desarrollo y envío
 
@@ -138,4 +138,4 @@ pnpm install
 
 ## Legal
 
-Al contribuir, acepta que sus contribuciones se licenciarán bajo la Licencia Apache 2.0, de acuerdo con la licencia de Roo Code.
+Al contribuir, acepta que sus contribuciones se licenciarán bajo la Licencia Apache 2.0, de acuerdo con la licencia de ForgeFox.
